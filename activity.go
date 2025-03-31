@@ -16,16 +16,16 @@ import (
 
 // FFmpegProcessingParams contains the parameters for the FFmpeg video processing activity
 type FFmpegProcessingParams struct {
-	InputPath  string   // Path to the input video file
-	OutputPath string   // Path where the processed video will be saved
-	FFmpegArgs []string // Additional FFmpeg arguments
+	InputPath  string   `json:"inputPath"`
+	OutputPath string   `json:"outputPath"`
+	FFmpegArgs []string `json:"ffmpegArgs"`
 }
 
 // FFmpegProcessingResult contains the results of the processing
 type FFmpegProcessingResult struct {
-	OutputPath     string        // Path to the processed video
-	DurationMs     int64         // Duration of the video in milliseconds
-	ProcessingTime time.Duration // Total processing time
+	OutputPath     string        `json:"outputPath"`
+	DurationMs     int64         `json:"durationMs"`
+	ProcessingTime time.Duration `json:"processingTime"`
 }
 
 // ProcessVideoWithFFmpeg runs ffmpeg command with the given parameters and sends heartbeats periodically
