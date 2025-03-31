@@ -14,11 +14,9 @@ import (
 
 // Command-line flags
 var (
-	startWorkflowMode = flag.Bool("start", false, "Start a new workflow")
-	workflowID        = flag.String("workflow-id", "", "Workflow ID (defaults to auto-generated)")
-	inputPath         = flag.String("input", "", "Input video file path")
-	outputPath        = flag.String("output", "", "Output video file path")
-	ffmpegArgs        = flag.String("ffmpeg-args", "-c:v libx264 -preset medium -crf 23 -c:a copy", "FFmpeg arguments (space-separated)")
+	inputPath  = flag.String("input", "", "Input video file path")
+	outputPath = flag.String("output", "", "Output video file path")
+	ffmpegArgs = flag.String("ffmpeg-args", "-c:v libx264 -preset medium -crf 23 -c:a copy", "FFmpeg arguments (space-separated)")
 )
 
 // In a separate file or program, you can start the workflow:
@@ -47,7 +45,7 @@ func main() {
 	params := app.FFmpegProcessingParams{
 		InputPath:  *inputPath,
 		OutputPath: *outputPath,
-		FFmpegArgs: *ffmpegArgs,
+		FFmpegArgs: ffmpegArgsList,
 	}
 
 	workflowOptions := client.StartWorkflowOptions{
